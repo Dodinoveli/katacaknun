@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".MainActivity">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:duration="800"
+        tools:ignore="MissingConstraints">
+
+        <!-- Adding 7 rows of placeholders -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/data_placeholder" />
+            <include layout="@layout/data_placeholder" />
+            <include layout="@layout/data_placeholder" />
+            <include layout="@layout/data_placeholder" />
+            <include layout="@layout/data_placeholder" />
+            <include layout="@layout/data_placeholder" />
+            <include layout="@layout/data_placeholder" />
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="#ffff"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="149dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/g7473"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05"
+            tools:ignore="MissingConstraints" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        tools:ignore="MissingConstraints">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginBottom="32dp"
+        app:fab_size="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu_backgroundColor="@android:color/transparent"
+        app:menu_colorNormal="#B61957"
+        app:menu_colorPressed="#FF00786D"
+        app:menu_icon="@drawable/ic_baseline_menu_24"
+        app:menu_labels_colorNormal="#FFFFFF"
+        app:menu_labels_colorPressed="#BDBDBD"
+        app:menu_labels_showShadow="true"
+        app:menu_labels_textColor="#000000"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true"
+        tools:ignore="MissingConstraints">
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/ck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Caknun"
+            android:src="@drawable/ic_round_supervised_user_circle_24"
+            app:fab_colorNormal="#7B1FA2"
+            app:fab_colorPressed="#FF00786D"
+            app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/hb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Uas"
+            android:src="@drawable/ic_round_supervised_user_circle_24"
+            app:fab_colorNormal="#FBC02D"
+            app:fab_colorPressed="#FF00786D"
+            app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/gs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Gus Baha"
+            app:fab_shadowColor="#7B1FA2"
+            android:src="@drawable/ic_round_supervised_user_circle_24"
+            app:fab_colorNormal="#F60666"
+            app:fab_colorPressed="#FF00786D"
+            app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/rm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Jalaludin Rummi"
+            app:fab_shadowColor="#7B1FA2"
+            android:src="@drawable/ic_round_supervised_user_circle_24"
+            app:fab_colorNormal="#0288D1"
+            app:fab_colorPressed="#FF00786D"
+            app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/walpper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Wallpaper"
+            app:fab_shadowColor="#7B1FA2"
+            android:src="@drawable/ic_baseline_wallpaper_24"
+            app:fab_colorNormal="#388E3C"
+            app:fab_colorPressed="#FF00786D"
+            app:fab_size="mini"
+            android:outlineProvider="background"
+            />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</android.support.constraint.ConstraintLayout>
