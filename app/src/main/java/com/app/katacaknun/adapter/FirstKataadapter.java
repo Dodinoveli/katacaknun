@@ -11,7 +11,7 @@ import com.app.katacaknun.model.FirstKata;
 import java.util.ArrayList;
 
 public class FirstKataadapter extends RecyclerView.Adapter<FirstKataadapter.KataHolder> {
-    /* buat array */
+    /* buat array  baru  */
     private ArrayList<FirstKata> dataFirstKata = new ArrayList<>();
 
     public FirstKataadapter(ArrayList<FirstKata> dataFirstKata){
