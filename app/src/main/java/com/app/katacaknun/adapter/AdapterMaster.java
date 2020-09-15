@@ -10,17 +10,19 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.katacaknun.R;
-import com.app.katacaknun.model.FirstKata;
+import com.app.katacaknun.model.Master_katrgory;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class FirstKataadapter extends RecyclerView.Adapter<FirstKataadapter.KataHolder> {
+public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder> {
     /* buat array  tiga  */
-    private ArrayList<FirstKata> dataFirstKata = new ArrayList<>();
+    //private ArrayList<FirstKata> dataFirstKata = new ArrayList<>();
+    private List<Master_katrgory>dataMaster = new ArrayList<>();
     private Context context;
-    public FirstKataadapter(Context context,ArrayList<FirstKata> dataFirstKata){
-       this.dataFirstKata = dataFirstKata;
+    public AdapterMaster(Context context, ArrayList<Master_katrgory> dataMaster){
+       this.dataMaster = dataMaster;
        this.context = context;
     }
 
@@ -34,16 +36,16 @@ public class FirstKataadapter extends RecyclerView.Adapter<FirstKataadapter.Kata
     /*mengikat view holder*/
     @Override
     public void onBindViewHolder(KataHolder kataHolder, int position) {
-        kataHolder.judul.setText(dataFirstKata.get(position).getJudul());
+        kataHolder.judul.setText(dataMaster.get(position).getKategori());
         //kataHolder.imageView.setImageResource(dataFirstKata.get(position).getImage());
         // Glide.with(context).load(imageUrls.get(i).getImageUrl()).into(viewHolder.img);
-        Glide.with(context).load(dataFirstKata.get(position).getImage()).circleCrop().into(kataHolder.imageView);
+        Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
 
     }
 
     @Override
     public int getItemCount() {
-        return (dataFirstKata != null) ? dataFirstKata.size() : 0;
+        return (dataMaster != null) ? dataMaster.size() : 0;
     }
 
     /*Class holder kata kata */

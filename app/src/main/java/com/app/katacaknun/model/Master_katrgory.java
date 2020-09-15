@@ -10,10 +10,20 @@ public class Master_katrgory {
     @SerializedName("kategori")
     @Expose
     private String kategori;
+    private int image;
 
-    public Master_katrgory(String kat_id, String kategori) {
+    public Master_katrgory(String kat_id, String kategori, int image) {
         this.kat_id = kat_id;
         this.kategori = kategori;
+        this.image = image;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getKat_id() {
