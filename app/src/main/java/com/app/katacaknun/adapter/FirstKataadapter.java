@@ -1,26 +1,31 @@
 package com.app.katacaknun.adapter;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.app.katacaknun.R;
 import com.app.katacaknun.model.FirstKata;
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class FirstKataadapter extends RecyclerView.Adapter<FirstKataadapter.KataHolder> {
     /* buat array  tiga  */
     private ArrayList<FirstKata> dataFirstKata = new ArrayList<>();
-
-    public FirstKataadapter(ArrayList<FirstKata> dataFirstKata){
+    private Context context;
+    public FirstKataadapter(Context context,ArrayList<FirstKata> dataFirstKata){
        this.dataFirstKata = dataFirstKata;
+       this.context = context;
     }
 
-    @NonNull
     @Override
-    public KataHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public KataHolder onCreateViewHolder(ViewGroup parent, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_katacaknun, parent, false);
         return new KataHolder(view);
@@ -28,9 +33,12 @@ public class FirstKataadapter extends RecyclerView.Adapter<FirstKataadapter.Kata
 
     /*mengikat view holder*/
     @Override
-    public void onBindViewHolder(@NonNull KataHolder kataHolder, int position) {
+    public void onBindViewHolder(KataHolder kataHolder, int position) {
         kataHolder.judul.setText(dataFirstKata.get(position).getJudul());
-        kataHolder.imageView.setImageResource(dataFirstKata.get(position).getImage());
+        //kataHolder.imageView.setImageResource(dataFirstKata.get(position).getImage());
+        // Glide.with(context).load(imageUrls.get(i).getImageUrl()).into(viewHolder.img);
+        Glide.with(context).load(dataFirstKata.get(position).getImage()).circleCrop().into(kataHolder.imageView);
+
     }
 
     @Override
@@ -43,7 +51,7 @@ public class FirstKataadapter extends RecyclerView.Adapter<FirstKataadapter.Kata
         private TextView judul;
         private ImageView imageView;
 
-        public KataHolder(@NonNull View itemView) {
+        public KataHolder(View itemView) {
             super(itemView);
             judul = (TextView)itemView.findViewById(R.id.txt_judul);
             imageView = (ImageView) itemView.findViewById(R.id.img);

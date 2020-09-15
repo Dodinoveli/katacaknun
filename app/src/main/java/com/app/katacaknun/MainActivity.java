@@ -3,15 +3,14 @@ package com.app.katacaknun;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import android.support.v7.widget.ShareActionProvider;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.katacaknun.adapter.FirstKataadapter;
 import com.app.katacaknun.model.FirstKata;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         render();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        adapter = new FirstKataadapter(firstKataList);
+        adapter = new FirstKataadapter(MainActivity.this,firstKataList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
