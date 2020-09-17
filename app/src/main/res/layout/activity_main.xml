@@ -7,17 +7,17 @@
     android:background="#fff"
     tools:context=".MainActivity">
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_view_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical"
-        app:duration="800"
-        tools:ignore="MissingConstraints">
+    <!-- <com.facebook.shimmer.ShimmerFrameLayout
+       android:id="@+id/shimmer_view_container"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginTop="15dp"
+       android:orientation="vertical"
+       app:duration="800"
+       tools:ignore="MissingConstraints">
 
-        <!-- Adding 7 rows of placeholders -->
+       Adding 7 rows of placeholders
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             <include layout="@layout/data_placeholder" />
         </LinearLayout>
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout> -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"

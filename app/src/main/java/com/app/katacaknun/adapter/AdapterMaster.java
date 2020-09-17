@@ -10,18 +10,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.katacaknun.R;
-import com.app.katacaknun.model.Master_katrgory;
+import com.app.katacaknun.model.DataKetegori;
 import com.bumptech.glide.Glide;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder> {
-    /* buat array  tiga  */
-    //private ArrayList<FirstKata> dataFirstKata = new ArrayList<>();
-    private List<Master_katrgory>dataMaster = new ArrayList<>();
+    private List<DataKetegori>dataMaster;
     private Context context;
-    public AdapterMaster(Context context, ArrayList<Master_katrgory> dataMaster){
+    public AdapterMaster(Context context, List<DataKetegori> dataMaster){
        this.dataMaster = dataMaster;
        this.context = context;
     }
@@ -37,8 +33,6 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
     @Override
     public void onBindViewHolder(KataHolder kataHolder, int position) {
         kataHolder.judul.setText(dataMaster.get(position).getKategori());
-        //kataHolder.imageView.setImageResource(dataFirstKata.get(position).getImage());
-        // Glide.with(context).load(imageUrls.get(i).getImageUrl()).into(viewHolder.img);
         Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
 
     }
