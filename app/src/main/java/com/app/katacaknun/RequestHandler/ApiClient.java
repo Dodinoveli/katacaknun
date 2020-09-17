@@ -12,23 +12,10 @@ public class ApiClient {
             new Retrofit.Builder()
                     .baseUrl(API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create());
+
     public static <S> S createService(Class<S> serviceClass){
         Retrofit retrofit = builder.client(httpClient.build()).build();
         return retrofit.create(serviceClass);
     }
 }
-
-
- /*
-    private static Retrofit retrofit = null;
-    public static Retrofit getClient() {
-        if (retrofit==null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return retrofit;
-    }
-*/
 

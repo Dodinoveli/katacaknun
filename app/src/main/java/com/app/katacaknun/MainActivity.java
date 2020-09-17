@@ -30,22 +30,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    private ArrayList<DataKetegori> listMaster;
+    RecyclerView recyclerView;
+    AdapterMaster  adapter;
 
     //ShimmerFrameLayout mShimmerViewContainer;
     //Membuat Variable ShareAction Provider
     private ShareActionProvider shareActionProvider;
     FloatingActionButton caknun,wallpaper;
-    public static final String API_BASE_URL = "http://localhost/caknun/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
-
         render();
+        //mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+
+
         shareActionProvider = new ShareActionProvider(MainActivity.this);
         caknun    = (FloatingActionButton)findViewById(R.id.ck);
         caknun.setOnClickListener(new View.OnClickListener() {
@@ -70,20 +73,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void render(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(API_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ApiServiceKategori serviceKategori = retrofit.create(ApiServiceKategori.class);
-
+        ApiServiceKategori serviceKategori = ApiClient.createService(ApiServiceKategori.class);
         Call<ResultKategori>result         = serviceKategori.doGetMaster();
         result.enqueue(new Callback<ResultKategori>() {
             @Override
             public void onResponse(Call<ResultKategori> call, Response<ResultKategori> response) {
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-                AdapterMaster  adapter = new AdapterMaster(MainActivity.this,response.body().getResult());
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
-                recyclerView.setLayoutManager(layoutManager);
+                adapter = new AdapterMaster(MainActivity.this,response.body().getResult());
                 adapter.notifyDataSetChanged();
                 recyclerView.setAdapter(adapter);
                 Log.d(""," log data"+response.body().getResult());
