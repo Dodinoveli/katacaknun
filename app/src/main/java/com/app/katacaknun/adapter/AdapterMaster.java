@@ -1,14 +1,11 @@
 package com.app.katacaknun.adapter;
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.app.katacaknun.R;
 import com.app.katacaknun.model.DataKetegori;
 import com.bumptech.glide.Glide;
@@ -34,12 +31,12 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
     public void onBindViewHolder(KataHolder kataHolder, int position) {
         kataHolder.judul.setText(dataMaster.get(position).getKategori());
         Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
-
     }
 
     @Override
     public int getItemCount() {
-        return (dataMaster != null) ? dataMaster.size() : 0;
+       /* return (dataMaster != null) ? dataMaster.size() : 0;*/
+        return  dataMaster.size();
     }
 
     /*Class holder kata kata */

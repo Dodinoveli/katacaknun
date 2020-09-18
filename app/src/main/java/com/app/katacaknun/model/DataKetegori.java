@@ -3,7 +3,6 @@ package com.app.katacaknun.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 public class DataKetegori {
-
     @SerializedName("kat_id")
     @Expose
     private String kat_id;

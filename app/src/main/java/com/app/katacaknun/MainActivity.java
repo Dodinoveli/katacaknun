@@ -12,7 +12,7 @@ import androidx.appcompat.widget.ShareActionProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.katacaknun.Interface.ApiServiceKategori;
+import com.app.katacaknun.ApiService.ApiServiceKategori;
 import com.app.katacaknun.RequestHandler.ApiClient;
 import com.app.katacaknun.adapter.AdapterMaster;
 import com.app.katacaknun.model.DataKetegori;
@@ -22,18 +22,20 @@ import com.github.clans.fab.FloatingActionButton;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     AdapterMaster  adapter;
+    RecyclerView.LayoutManager manager;
 
-    //ShimmerFrameLayout mShimmerViewContainer;
+    List<DataKetegori>list = new ArrayList<DataKetegori>();
+
+    ShimmerFrameLayout mShimmerViewContainer;
     //Membuat Variable ShareAction Provider
     private ShareActionProvider shareActionProvider;
     FloatingActionButton caknun,wallpaper;
@@ -42,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        render();
-        //mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
 
+        mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        manager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(manager);
+        render();
 
         shareActionProvider = new ShareActionProvider(MainActivity.this);
         caknun    = (FloatingActionButton)findViewById(R.id.ck);
@@ -68,25 +70,32 @@ public class MainActivity extends AppCompatActivity {
               finish();
             }
         });
-
-
     }
 
     private void render(){
-        ApiServiceKategori serviceKategori = ApiClient.createService(ApiServiceKategori.class);
-        Call<ResultKategori>result         = serviceKategori.doGetMaster();
+        ApiServiceKategori api = ApiClient.getRetrofit().create(ApiServiceKategori.class);
+        Call<ResultKategori>result         = api.doGetMaster();
         result.enqueue(new Callback<ResultKategori>() {
             @Override
             public void onResponse(Call<ResultKategori> call, Response<ResultKategori> response) {
-                adapter = new AdapterMaster(MainActivity.this,response.body().getResult());
-                adapter.notifyDataSetChanged();
-                recyclerView.setAdapter(adapter);
                 Log.d(""," log data"+response.body().getResult());
+                list    = response.body().getResult();
+                if (response.isSuccessful()){
+                    if (response.code()==200){
+                        adapter = new AdapterMaster(MainActivity.this,list);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                    mShimmerViewContainer.startShimmerAnimation();
+                    mShimmerViewContainer.setVisibility(View.GONE);
+                }
             }
 
             @Override
             public void onFailure(Call<ResultKategori> call, Throwable t) {
                 t.printStackTrace();
+                Log.d("RETRO", "FAILED : respon gagal");
+                mShimmerViewContainer.stopShimmerAnimation();
             }
         });
     }
@@ -94,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //mShimmerViewContainer.startShimmerAnimation();
+        mShimmerViewContainer.startShimmerAnimation();
     }
 
     @Override
     protected void onPause() {
-       // mShimmerViewContainer.stopShimmerAnimation();
+       mShimmerViewContainer.stopShimmerAnimation();
         super.onPause();
     }
 

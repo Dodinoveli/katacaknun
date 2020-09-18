@@ -1,6 +1,5 @@
-package com.app.katacaknun.Interface;
+package com.app.katacaknun.ApiService;
 import com.app.katacaknun.model.ResultKategori;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 
