@@ -7,14 +7,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.app.katacaknun.R;
-import com.app.katacaknun.model.DataKetegori;
+import com.app.katacaknun.model.M_Ketegori;
 import com.bumptech.glide.Glide;
-import java.util.List;
+import java.util.ArrayList;
 
 public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder> {
-    private List<DataKetegori>dataMaster;
+    private ArrayList<M_Ketegori>dataMaster = new ArrayList<>();
     private Context context;
-    public AdapterMaster(Context context, List<DataKetegori> dataMaster){
+
+    public AdapterMaster(Context context, ArrayList<M_Ketegori> dataMaster){
        this.dataMaster = dataMaster;
        this.context = context;
     }
@@ -35,9 +36,16 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
 
     @Override
     public int getItemCount() {
-       /* return (dataMaster != null) ? dataMaster.size() : 0;*/
-        return  dataMaster.size();
+        int a;
+        if(dataMaster != null && !dataMaster.isEmpty()) {
+            a = dataMaster.size();
+        }
+        else {
+            a = 0;
+        }
+        return a;
     }
+
 
     /*Class holder kata kata */
     public class KataHolder extends RecyclerView.ViewHolder{
