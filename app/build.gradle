@@ -11,7 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
-        buildConfigField "String", "BASE_URL", '"http://192.168.43.92/caknun/"'
+        buildConfigField "String", "BASE_URL", '"http://192.168.18.106/caknun/"'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,10 +48,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.2.0")
 
     // library glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0' 
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     /*  Gson */
     implementation 'com.google.code.gson:gson:2.8.6'

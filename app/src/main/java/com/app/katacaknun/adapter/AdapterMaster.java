@@ -1,4 +1,5 @@
 package com.app.katacaknun.adapter;
+import android.app.LauncherActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder> {
+
     private ArrayList<M_Ketegori>dataMaster = new ArrayList<>();
     private Context context;
 
@@ -48,7 +50,7 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
 
 
     /*Class holder kata kata */
-    public class KataHolder extends RecyclerView.ViewHolder{
+    public class KataHolder extends RecyclerView.ViewHolder  {
         private TextView judul;
         private ImageView imageView;
 
@@ -56,7 +58,9 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
             super(itemView);
             judul = (TextView)itemView.findViewById(R.id.txt_judul);
             imageView = (ImageView) itemView.findViewById(R.id.img);
+
         }
+
     }
 }
 
