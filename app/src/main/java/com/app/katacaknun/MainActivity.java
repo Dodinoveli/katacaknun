@@ -6,7 +6,11 @@ import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.katacaknun.endPoint.E_Kategori;
 import com.app.katacaknun.RequestHandler.ApiServiceAll;
 import com.app.katacaknun.adapter.AdapterMaster;
+import com.app.katacaknun.endPoint.RecyclerViewClickListener;
+import com.app.katacaknun.listeners.RecyclerTouchListener;
 import com.app.katacaknun.model.M_Ketegori;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.github.clans.fab.FloatingActionButton;
@@ -30,6 +36,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
+    String KEY_ID = "KEY_ID";
     RecyclerView recyclerView;
     ArrayList<M_Ketegori>list ;
     AdapterMaster  adapter;
@@ -73,7 +80,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                String kat  = list.get(position).getKategori();
+                String kat_id = list.get(position).getKat_id();
+                //Toast.makeText(MainActivity.this,"id "+kat_id,Toast.LENGTH_LONG);
+                Log.i("If Status", "kat id "+kat_id);
+                Log.d("Kat","Pesan "+kat);
+                Intent intent = new Intent(MainActivity.this,Kategory.class);
+                intent.putExtra(KEY_ID,kat_id);
+                finish();
+                startActivity(intent);
+            }
+        }));
 
     }
 
@@ -86,10 +106,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
-                    mShimmerViewContainer.startShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
-                    mShimmerViewContainer.setDuration(5000);
-                    mShimmerViewContainer.setRepeatMode(ObjectAnimator.REVERSE);
+
                     if (response.code()==200){
                         try {
                             JSONObject object = new JSONObject(response.body().string().toString());
@@ -110,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
+                    mShimmerViewContainer.startShimmerAnimation();
+                    mShimmerViewContainer.setVisibility(View.GONE);
+                    mShimmerViewContainer.setDuration(5000);
+                    mShimmerViewContainer.setRepeatMode(ObjectAnimator.REVERSE);
                 }
             }
             @Override
@@ -141,4 +162,5 @@ public class MainActivity extends AppCompatActivity {
         Share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(apkPath)));
         shareActionProvider.setShareIntent(Share);
     }
+
 }
