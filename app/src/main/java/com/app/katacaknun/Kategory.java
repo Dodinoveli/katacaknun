@@ -90,10 +90,10 @@ public class Kategory extends AppCompatActivity {
                         if (status.equals("true")){
                             JSONArray jsonArray = new JSONArray(data);
                             for (int item=0; item<jsonArray.length(); item++){
-                                JSONObject object1 = jsonArray.getJSONObject(item);
-                                String kat_id  = object1.getString("kat_id");
-                                String judul = object1.getString("judul");
-                                String kata_id = object1.getString("kata_id");
+                                JSONObject object1  = jsonArray.getJSONObject(item);
+                                String kat_id       = object1.getString("kat_id");
+                                String judul        = object1.getString("judul");
+                                String kata_id      = object1.getString("kata_id");
                                 Log.d("result :  "," Result :"+judul);
                                detail_list.add(new M_kata(kat_id,judul,kata_id));
                             }
