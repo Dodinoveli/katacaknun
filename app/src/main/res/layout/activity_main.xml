@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#F6F2F2"
     tools:context=".MainActivity">
 
     <com.facebook.shimmer.ShimmerFrameLayout
@@ -13,15 +13,18 @@
         android:layout_height="430dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        app:duration="800"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="202dp">
+        tools:layout_editor_absoluteY="100dp">
 
         <!--Adding 7 rows of placeholders-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <include layout="@layout/data_placeholder" />
+
+            <include layout="@layout/data_placeholder" />
 
             <include layout="@layout/data_placeholder" />
 
@@ -44,13 +47,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="#ffff"
-        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#F8F5F6"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/shimmer_view_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
@@ -59,23 +63,39 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <RelativeLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/bagroundgr"
             android:layout_width="match_parent"
-            android:layout_height="149dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="5dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/g7473"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_view_row_kat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.05"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/ok"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif"
+                android:text="MAIYAH NUSANTARA"
+                android:textColor="#ffff"
+                android:layout_toRightOf="@id/img_act_kat"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_act_kat"
+                android:src="@drawable/loo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@id/img_act_kat"
+                android:layout_below="@id/ok"
+                android:id="@+id/img_act_kat2"
+                android:src="@drawable/circle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -84,7 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +130,7 @@
         app:layout_constraintHorizontal_bias="0.883"
         app:layout_constraintStart_toStartOf="parent"
         app:menu_backgroundColor="@android:color/transparent"
-        app:menu_colorNormal="#6835E4"
+        app:menu_colorNormal="#09D612"
         app:menu_colorPressed="#FF00786D"
         app:menu_icon="@drawable/ic_baseline_menu_24"
         app:menu_labels_colorNormal="#FFFFFF"

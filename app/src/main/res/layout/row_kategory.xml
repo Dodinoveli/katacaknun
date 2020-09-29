@@ -2,29 +2,43 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
     app:cardBackgroundColor="#ffff"
     app:cardCornerRadius="5dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="1.0"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:ignore="MissingConstraints"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:background="#ffff"
+           android:orientation="vertical"
+           android:layout_margin="5dp"
+           android:layout_height="wrap_content">
+               <ImageView
+                   android:id="@+id/img_kat"
+                   android:scaleType="centerCrop"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp">
+               </ImageView>
 
-        <TextView
-            android:id="@+id/text_detail_kat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif"
-            android:text="Halooo"
-            android:textColor="#050505"
-            android:textSize="18dp"
-            tools:ignore="MissingConstraints">
-        </TextView>
+               <TextView
+                   android:id="@+id/text_detail_kat"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="60dp"
+                   android:layout_marginTop="5dp"
+                   android:fontFamily="sans-serif"
+                   android:text="Halooo"
+                   android:textColor="#050505"
+                   android:textSize="18dp"
+                   tools:ignore="MissingConstraints">
+               </TextView>
+       </RelativeLayout>
 </androidx.cardview.widget.CardView>

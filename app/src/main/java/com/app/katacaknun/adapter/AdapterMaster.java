@@ -33,7 +33,8 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
     @Override
     public void onBindViewHolder(KataHolder kataHolder, int position) {
         kataHolder.judul.setText(dataMaster.get(position).getKategori());
-        Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
+        //Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
+        Glide.with(context).load(R.drawable.loo).circleCrop().into(kataHolder.imageView);
     }
 
     @Override

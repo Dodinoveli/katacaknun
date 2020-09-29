@@ -163,4 +163,9 @@ public class MainActivity extends AppCompatActivity {
         shareActionProvider.setShareIntent(Share);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 }
