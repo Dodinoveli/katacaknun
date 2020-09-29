@@ -7,6 +7,8 @@ import retrofit2.http.Query;
 public interface E_Detail {
 
 @GET(Config.API_SUB_KAT)
-    Call<ResponseBody>getDetail(
-            @Query("kat_id") String id);
+    Call<ResponseBody>getDetail(@Query("kat_id") String id);
+
+@GET(Config.API_DETAIL)
+    Call<ResponseBody>getDetailData(@Query("kata_id")String id);
 }

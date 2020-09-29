@@ -31,7 +31,7 @@ import retrofit2.Retrofit;
 
 public class Kategory extends AppCompatActivity {
     String KEY_ID="KEY_ID";
-    String data="";
+    String KEY_KATA_ID="KATA_ID";
     ArrayList<M_kata> detail_list;
     RecyclerView recyclerView;
     AdapterKategory adapterKategory;
@@ -41,7 +41,8 @@ public class Kategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kategory);
         Bundle bundle = getIntent().getExtras();
-        data = bundle.getString(KEY_ID);
+        String  data = bundle.getString(KEY_ID);
+
         Log.d("data","Pesan"+data);
         getKategori(data);
         recyclerView = (RecyclerView)findViewById(R.id.rec_kata);
@@ -57,10 +58,10 @@ public class Kategory extends AppCompatActivity {
             public void onClick(View view, int position) {
                 String kata_id = detail_list.get(position).getKata_id();
                 Log.i("Kata", "kata_id = "+kata_id);
-               /* Intent intent = new Intent(Kategory.this,Detail.class);
-                intent.putExtra(KEY_ID,kat_id);
+                Intent intent = new Intent(Kategory.this,Detail.class);
+                intent.putExtra(KEY_KATA_ID,kata_id);
                 finish();
-                startActivity(intent);*/
+                startActivity(intent);
             }
         }));
     }
