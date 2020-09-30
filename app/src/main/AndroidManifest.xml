@@ -4,6 +4,8 @@
     package="com.app.katacaknun">
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@drawable/loo"

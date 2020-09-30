@@ -9,12 +9,16 @@ public class M_Ketegori {
     @SerializedName("kategori")
     @Expose
     private String kategori;
+    @SerializedName("tgl")
+    @Expose
+    private String tgl;
     private int image;
 
-    public M_Ketegori(String kat_id, String kategori, int image) {
+    public M_Ketegori(String kat_id, String kategori, int image,String tgl) {
         this.kat_id = kat_id;
         this.kategori = kategori;
         this.image = image;
+        this.tgl  = tgl;
     }
 
     public int getImage() {
@@ -39,5 +43,13 @@ public class M_Ketegori {
 
     public void setKategori(String kategori) {
         this.kategori = kategori;
+    }
+
+    public String getTgl() {
+        return tgl;
+    }
+
+    public void setTgl(String tgl) {
+        this.tgl = tgl;
     }
 }

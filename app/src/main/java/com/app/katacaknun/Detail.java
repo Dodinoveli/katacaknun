@@ -122,8 +122,9 @@ public class Detail extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(Detail.this,Kategory.class);
         intent.putExtra(KEY_ID,kat_id);
-        finish();
         startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         Log.d("tag ","onBackPressed = "+kat_id);
     }
 

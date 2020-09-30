@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="100dp">
+        tools:layout_editor_absoluteY="300dp">
 
         <!--Adding 7 rows of placeholders-->
         <LinearLayout
@@ -48,13 +48,10 @@
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:cardBackgroundColor="#F8F5F6"
-        app:cardElevation="0dp"
         app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/shimmer_view_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
@@ -64,37 +61,40 @@
         tools:ignore="MissingConstraints">
 
         <RelativeLayout
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@drawable/bagroundgr"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/bagroundgr"
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <TextView
                 android:id="@+id/ok"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img_act_kat"
                 android:fontFamily="sans-serif"
                 android:text="MAIYAH NUSANTARA"
+                android:textAlignment="center"
                 android:textColor="#ffff"
-                android:layout_toRightOf="@id/img_act_kat"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/img_act_kat"
-                android:src="@drawable/loo"
                 android:layout_width="100dp"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp"
+                android:src="@drawable/loo" />
+
             <ImageView
+                android:id="@+id/img_act_kat2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/ok"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@id/img_act_kat"
-                android:layout_below="@id/ok"
-                android:id="@+id/img_act_kat2"
-                android:src="@drawable/circle"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:src="@drawable/circle" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
@@ -104,14 +104,15 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/_dynamic"
         tools:ignore="MissingConstraints">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -194,6 +195,17 @@
             />
 
     </com.github.clans.fab.FloatingActionMenu>
+
+    <GridView
+        android:layout_width="0dp"
+        android:layout_height="198dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="100dp"
+        android:numColumns="4"
+        app:layout_constraintBottom_toTopOf="@+id/shimmer_view_container"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

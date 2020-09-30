@@ -68,8 +68,9 @@ public class Kategory extends AppCompatActivity {
                 Intent intent = new Intent(Kategory.this,Detail.class);
                 intent.putExtra(KEY_KATA_ID,kata_id);
                 intent.putExtra(KEY_KAT_ID,kat_id);
-                finish();
                 startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         }));
 
@@ -85,6 +86,7 @@ public class Kategory extends AppCompatActivity {
         Intent intent=new Intent(Kategory.this,MainActivity.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     private void  getKategori(String data_id){
@@ -145,4 +147,6 @@ public class Kategory extends AppCompatActivity {
         super.onPause();
 
     }
+
+
 }

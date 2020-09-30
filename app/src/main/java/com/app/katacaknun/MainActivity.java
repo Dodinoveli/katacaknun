@@ -90,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Kat","Pesan "+kat);
                 Intent intent = new Intent(MainActivity.this,Kategory.class);
                 intent.putExtra(KEY_ID,kat_id);
-                finish();
                 startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         }));
 
@@ -119,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject object1=jsonArray.getJSONObject(x);
                                     String kat_id = object1.getString("kat_id");
                                     String kategori = object1.getString("kategori");
-                                    list.add(new M_Ketegori(kat_id,kategori,0));
+                                    String tgl = object1.getString("tgl");
+                                    String subStr = tgl.substring(0,10);
+                                    list.add(new M_Ketegori(kat_id,kategori,0,subStr));
                                 }
                                 adapter.notifyDataSetChanged();
                             }

@@ -33,6 +33,7 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
     @Override
     public void onBindViewHolder(KataHolder kataHolder, int position) {
         kataHolder.judul.setText(dataMaster.get(position).getKategori());
+        kataHolder.tgl.setText(dataMaster.get(position).getTgl());
         //Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
         Glide.with(context).load(R.drawable.loo).circleCrop().into(kataHolder.imageView);
     }
@@ -52,12 +53,13 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
 
     /*Class holder kata kata */
     public class KataHolder extends RecyclerView.ViewHolder  {
-        private TextView judul;
+        private TextView judul,tgl;
         private ImageView imageView;
 
         public KataHolder(View itemView) {
             super(itemView);
             judul = (TextView)itemView.findViewById(R.id.txt_judul);
+            tgl = (TextView)itemView.findViewById(R.id.tgl);
             imageView = (ImageView) itemView.findViewById(R.id.img);
 
         }
