@@ -6,21 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.app.katacaknun.R;
-import com.app.katacaknun.model.M_Ketegori;
-import com.app.katacaknun.model.M_kata;
+import com.app.katacaknun.model.M_Kategory;
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 public class AdapterKategory extends RecyclerView.Adapter<AdapterKategory.KategoryHolder>{
-    ArrayList <M_kata>list_kata=new ArrayList<>();
+    ArrayList <M_Kategory>list_kata=new ArrayList<>();
     private Context context;
-    public AdapterKategory(Context context, ArrayList<M_kata>list_kata){
+    public AdapterKategory(Context context, ArrayList<M_Kategory>list_kata){
         this.context = context;
         this.list_kata = list_kata;
     }
@@ -40,7 +36,13 @@ public class AdapterKategory extends RecyclerView.Adapter<AdapterKategory.Katego
 
     @Override
     public int getItemCount() {
-        return list_kata.size();
+        int x;
+        if (!list_kata.isEmpty() && list_kata !=null){
+            x = list_kata.size();
+        }else{
+            x=0;
+        }
+        return x;
     }
 
     public class KategoryHolder extends RecyclerView.ViewHolder {

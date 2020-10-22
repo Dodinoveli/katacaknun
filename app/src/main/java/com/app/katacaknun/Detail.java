@@ -2,12 +2,15 @@ package com.app.katacaknun;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.katacaknun.RequestHandler.ApiServiceAll;
 import com.app.katacaknun.endPoint.E_Detail;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +33,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class Detail extends AppCompatActivity {
+    ProgressBar progressBar;
     String data="";
     String KEY_ID="KEY_ID";
     String kat_id;
@@ -43,7 +48,15 @@ public class Detail extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         data = bundle.getString("KATA_ID");
         kat_id = bundle.getString("KAT_ID");
-        getData(data);
+        progressBar = (ProgressBar)findViewById(R.id.pgrs);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getData(data);
+            }
+        },3000);
+
         Log.d("tag","hasil"+data);
         Log.d("tag","kat id detail "+kat_id);
         textView  = (TextView)findViewById(R.id.txt_detail);
@@ -90,8 +103,8 @@ public class Detail extends AppCompatActivity {
                     if (response.code()==200){
                         try {
                             JSONObject object   = new JSONObject(response.body().string().toString());
-                            String status       = object.getString("status");
-                            String data         = object.getString("data");
+                            String status       = object.getString("result");
+                            String data         = object.getString("pesan");
                             if (status.equals("true")){
                                 JSONArray jsonArray = new JSONArray(data);
                                 for (int item=0; item<jsonArray.length(); item++){
@@ -107,6 +120,7 @@ public class Detail extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
+
                 }
             }
 
@@ -128,4 +142,14 @@ public class Detail extends AppCompatActivity {
         Log.d("tag ","onBackPressed = "+kat_id);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+}

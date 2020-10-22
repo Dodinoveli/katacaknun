@@ -46,23 +46,10 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/img"
             android:drawableLeft="@drawable/ic_baseline_access_time_24"
-            android:text="Update 12-12-1993"
-            android:textColor="#F60736">
+            android:textColor="#2C2A2B">
 
         </TextView>
 
-        <TextView
-            android:id="@+id/like"
-            android:drawableLeft="@drawable/ic_baseline_thumb_up_24"
-            android:layout_marginLeft="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_judul"
-            android:layout_toRightOf="@id/tgl"
-            android:text="10"
-            android:textColor="#F60736">
-
-        </TextView>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

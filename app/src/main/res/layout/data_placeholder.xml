@@ -26,23 +26,23 @@
         <View
             android:layout_width="200dp"
             android:layout_height="@dimen/placeholderTextHeight"
-            android:background="#D11F5B" />
+            android:background="#9E9799" />
         <View
             android:layout_width="150dp"
             android:layout_height="@dimen/placeholderTextHeight"
             android:layout_marginTop="5dp"
-            android:background="@color/colorPrimary" />
+            android:background="#9E9799" />
         <View
             android:layout_width="140dp"
             android:layout_height="@dimen/placeholderTextHeight"
             android:layout_marginTop="5dp"
-            android:background="#21CC29" />
+            android:background="#9E9799" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/placeholderTextHeight"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:background="#F35C2C" />
+            android:background="#9E9799" />
     </LinearLayout>
 </RelativeLayout>

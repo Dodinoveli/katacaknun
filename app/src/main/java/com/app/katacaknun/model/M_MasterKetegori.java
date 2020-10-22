@@ -2,7 +2,7 @@ package com.app.katacaknun.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-public class M_Ketegori {
+public class M_MasterKetegori {
     @SerializedName("kat_id")
     @Expose
     private String kat_id;
@@ -14,7 +14,7 @@ public class M_Ketegori {
     private String tgl;
     private int image;
 
-    public M_Ketegori(String kat_id, String kategori, int image,String tgl) {
+    public M_MasterKetegori(String kat_id, String kategori, int image, String tgl) {
         this.kat_id = kat_id;
         this.kategori = kategori;
         this.image = image;

@@ -1,5 +1,4 @@
 package com.app.katacaknun.adapter;
-import android.app.LauncherActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +7,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.app.katacaknun.R;
-import com.app.katacaknun.model.M_Ketegori;
+import com.app.katacaknun.model.M_MasterKetegori;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
-public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder> {
+public class AdapterMasterKategory extends RecyclerView.Adapter<AdapterMasterKategory.KataHolder> {
 
-    private ArrayList<M_Ketegori>dataMaster = new ArrayList<>();
+    private ArrayList<M_MasterKetegori>dataMaster = new ArrayList<>();
     private Context context;
 
-    public AdapterMaster(Context context, ArrayList<M_Ketegori> dataMaster){
+    public AdapterMasterKategory(Context context, ArrayList<M_MasterKetegori> dataMaster){
        this.dataMaster = dataMaster;
        this.context = context;
     }
@@ -34,7 +33,6 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
     public void onBindViewHolder(KataHolder kataHolder, int position) {
         kataHolder.judul.setText(dataMaster.get(position).getKategori());
         kataHolder.tgl.setText(dataMaster.get(position).getTgl());
-        //Glide.with(context).load(dataMaster.get(position).getImage()).circleCrop().into(kataHolder.imageView);
         Glide.with(context).load(R.drawable.loo).circleCrop().into(kataHolder.imageView);
     }
 
@@ -61,9 +59,8 @@ public class AdapterMaster extends RecyclerView.Adapter<AdapterMaster.KataHolder
             judul = (TextView)itemView.findViewById(R.id.txt_judul);
             tgl = (TextView)itemView.findViewById(R.id.tgl);
             imageView = (ImageView) itemView.findViewById(R.id.img);
-
         }
+    }/*Class holder kata kata */
 
-    }
 }
 

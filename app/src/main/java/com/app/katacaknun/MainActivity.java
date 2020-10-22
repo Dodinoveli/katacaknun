@@ -6,21 +6,20 @@ import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.app.katacaknun.endPoint.E_Kategori;
 import com.app.katacaknun.RequestHandler.ApiServiceAll;
-import com.app.katacaknun.adapter.AdapterMaster;
+import com.app.katacaknun.adapter.AdapterMasterKategory;
 import com.app.katacaknun.endPoint.RecyclerViewClickListener;
 import com.app.katacaknun.listeners.RecyclerTouchListener;
-import com.app.katacaknun.model.M_Ketegori;
+import com.app.katacaknun.model.M_MasterKetegori;
+import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.github.clans.fab.FloatingActionButton;
 import org.json.JSONArray;
@@ -36,10 +35,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
+
+
     String KEY_ID = "KEY_ID";
     RecyclerView recyclerView;
-    ArrayList<M_Ketegori>list ;
-    AdapterMaster  adapter;
+    ArrayList<M_MasterKetegori>list ;
+    AdapterMasterKategory adapter;
     ShimmerFrameLayout mShimmerViewContainer;
     //Membuat Variable ShareAction Provider
     private ShareActionProvider shareActionProvider;
@@ -49,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageView img_main = (ImageView)findViewById(R.id.img_main);
+        Glide.with(this).load(R.drawable.loo).circleCrop().into(img_main);
         getJson();
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_row_kat);
-        adapter = new AdapterMaster(MainActivity.this,list);
+        adapter = new AdapterMasterKategory(MainActivity.this,list);
 
         LinearLayoutManager manager      = new LinearLayoutManager(MainActivity.this);
         manager.setOrientation(RecyclerView.VERTICAL);
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                     String kategori = object1.getString("kategori");
                                     String tgl = object1.getString("tgl");
                                     String subStr = tgl.substring(0,10);
-                                    list.add(new M_Ketegori(kat_id,kategori,0,subStr));
+                                    list.add(new M_MasterKetegori(kat_id,kategori,0,"Update "+subStr));
                                 }
                                 adapter.notifyDataSetChanged();
                             }

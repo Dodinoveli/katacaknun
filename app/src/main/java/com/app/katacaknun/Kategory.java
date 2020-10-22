@@ -16,7 +16,7 @@ import com.app.katacaknun.adapter.AdapterKategory;
 import com.app.katacaknun.endPoint.E_Detail;
 import com.app.katacaknun.endPoint.RecyclerViewClickListener;
 import com.app.katacaknun.listeners.RecyclerTouchListener;
-import com.app.katacaknun.model.M_kata;
+import com.app.katacaknun.model.M_Kategory;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
@@ -37,7 +37,7 @@ public class Kategory extends AppCompatActivity {
     String KEY_ID="KEY_ID";
     String KEY_KATA_ID="KATA_ID";
     String KEY_KAT_ID="KAT_ID";
-    ArrayList<M_kata> detail_list;
+    ArrayList<M_Kategory> detail_list;
     RecyclerView recyclerView;
     AdapterKategory adapterKategory;
     ShimmerFrameLayout mShimmerViewContainer;
@@ -50,7 +50,7 @@ public class Kategory extends AppCompatActivity {
 
         Log.d("data","Pesan"+data);
         getKategori(data);
-        recyclerView = (RecyclerView)findViewById(R.id.rec_kata);
+        recyclerView    = (RecyclerView)findViewById(R.id.rec_kata);
         adapterKategory = new AdapterKategory(Kategory.this,detail_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Kategory.this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -102,8 +102,8 @@ public class Kategory extends AppCompatActivity {
                     if (response.code()==200){
                         try {
                             JSONObject object = new JSONObject(response.body().string().toString());
-                            String status = object.getString("status");
-                            String data   = object.getString("data");
+                            String status = object.getString("result");
+                            String data   = object.getString("pesan");
                             if (status.equals("true")){
                                 JSONArray jsonArray = new JSONArray(data);
                                 for (int item=0; item<jsonArray.length(); item++){
@@ -112,7 +112,7 @@ public class Kategory extends AppCompatActivity {
                                     String judul        = object1.getString("judul");
                                     String kata_id      = object1.getString("kata_id");
                                     Log.d("result :  "," Result :"+judul);
-                                    detail_list.add(new M_kata(kat_id,judul,kata_id,""));
+                                    detail_list.add(new M_Kategory(kat_id,judul,kata_id,""));
                                 }
                                 adapterKategory.notifyDataSetChanged();
                             }
